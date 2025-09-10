@@ -2,7 +2,8 @@
   "profiles": {
     "md2visio": {
       "commandName": "Project",
-      "commandLineArgs": "/D /V /I \"C:\\Users\\Megre\\Documents\\GitHub\\md2visio\\md2visio\\test\\pie.md\" /O \"C:\\Users\\Megre\\Desktop\""
+      "commandLineArgs": "/D /V /I \"C:\\Users\\TR\\Desktop\\a.md\" /O \"C:\\Users\\TR\\Desktop\"",
+      "workingDirectory": "$(ProjectDir)"
     }
   }
 }

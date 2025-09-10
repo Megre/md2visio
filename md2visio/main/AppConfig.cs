@@ -51,7 +51,7 @@
                 "/I\tSpecify the path of the input file (.md)\n" +
                 "/O\tSpecify the path/folder of the output file (.vsdx)\n" +
                 "/V\tShow the Visio application while drawing (optional, default is invisible)\n" +
-                "/Y\tQuietly overwrite the existing output file (optional, by default requires user confirmation" +
+                "/Y\tQuietly overwrite the existing output file (optional, by default requires user confirmation\n" +
                 "/?\tPrint this help");
         }
     }

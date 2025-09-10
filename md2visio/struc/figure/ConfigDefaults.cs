@@ -1,10 +1,11 @@
 ﻿using md2visio.mermaid.cmn;
+using md2visio.vsdx._tool;
 
 namespace md2visio.struc.figure
 {
     internal class ConfigDefaults: IConfig
     {
-        static readonly string defaultDir = "./default";
+        static readonly string defaultDir = FileTool.ExtendPath("default");
         static readonly string themeDir = $"{defaultDir}/theme";        
         static readonly Dictionary<string, MmdFrontMatter> defConfig = new(); // ./default/?.yaml
         static readonly Dictionary<string, MmdFrontMatter> themeVars = new(); // ./default/theme/?.yaml

@@ -49,8 +49,4 @@
     <Folder Include="struc\zen\" />
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy /Y /F C:\Users\Megre\Documents\我的形状\md2visio.vssx C:\Users\Megre\Documents\GitHub\md2visio" />
-  </Target>
-
 </Project>

@@ -1,4 +1,5 @@
-﻿using md2visio.vsdx.tool;
+﻿using md2visio.vsdx._tool;
+using md2visio.vsdx.tool;
 using Microsoft.Office.Interop.Visio;
 using System.Drawing;
 using System.Text.RegularExpressions;
@@ -8,7 +9,7 @@ namespace md2visio.vsdx.@base
 {
     internal abstract class VShapeDrawer
     {
-        public static string VSSX = "md2visio.vssx";
+        public static readonly string VSSX = FileTool.ExtendPath("md2visio.vssx");
         static Shape? shadow = null;
 
         protected Application visioApp;
@@ -19,6 +20,7 @@ namespace md2visio.vsdx.@base
         {
             this.visioApp = visioApp;
             visioPage = visioApp.ActivePage;
+
             stencilDoc = visioApp.Documents.OpenEx(VSSX, (short)VisOpenSaveArgs.visOpenDocked);
         }
 
