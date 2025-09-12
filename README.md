@@ -2,7 +2,7 @@
 
 # md2visio
 
- convert Markdown (`mermaid` / `mmd`) to `Visio` (`vsdx`)
+>  convert Markdown (`mermaid` / `mmd`) to `Visio` (`vsdx`)
 
 AI-assisted programming simplifies the creation of algorithm flowcharts. Many large language models (LLMs) are capable of generating Markdown (`Mermaid`) flowcharts. However, Markdown editors lack the functionality to edit these flowcharts as intuitively as specialized drawing tools such as `Visio`, which allow for actions like moving nodes or reorganizing layouts.
 
@@ -70,16 +70,16 @@ Development plan:
   - [x] themes
 - [x] journey
   - [x] themes
-- [ ] sequenceDiagram
-- [ ] classDiagram
-- [ ] stateDiagram
-- [ ] stateDiagram-v2
-- [ ] erDiagram
+- [ ] sequencefigure
+- [ ] classfigure
+- [ ] statefigure
+- [ ] statefigure-v2
+- [ ] erfigure
 - [ ] gantt
 - [x] pie
   - [x] themes
 - [ ] quadrantChart
-- [ ] requirementDiagram
+- [ ] requirementfigure
 - [ ] gitGraph
 - [ ] C4Context
 - [ ] mindmap
@@ -95,3 +95,32 @@ Development plan:
 - [x] Configuration
   - [x] frontmatter
   - [x] directive
+
+
+
+# Contributing
+
+## Introduction
+
+The implementation of the project consists of several parts:
+
+**Syntax Parsing.** When parsing Mermaid syntax, the project treats the Mermaid text as a state machine composed of different fields. By continuously looking ahead and backtracking, it identifies the components that constitute different types of figures. The initial state for every figure is always `SttMermaidStart` (three or more **Backtick**), and the final state is always `SttMermaidClose` (three or more **Backtick**).
+
+**Building the data structure for figures.** The parsed components are structured into a well-defined format, preparing the data for rendering.
+
+**Rendering in Visio.** To enable rendering, an `md2visio.vssx` file was created. It contains reusable graphical elements which the rendering program repeatedly uses to construct the figures.
+
+
+
+## Build
+
+The project is built with Visual Studio 2022. All dependency solution files are uploaded.
+
+
+
+## Depending Packages
+
+- WonderCircuits.Microsoft.Office.Interop.Visio
+- WonderCircuits.Microsoft.Office.Core
+- WonderCircuits.Microsoft.Vbe.Interop
+- YamlDotNet
