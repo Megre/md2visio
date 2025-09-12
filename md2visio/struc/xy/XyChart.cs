@@ -9,6 +9,14 @@ namespace md2visio.struc.xy
         public XyAxis YAxis { get; set; } = Empty.Get<XyAxis>();
         public MmdJsonArray Bar {  get; set; } = new MmdJsonArray();
         public MmdJsonArray Line { get; set; } = new MmdJsonArray();
+        public string Orientation
+        {
+            get
+            {
+                string ori = string.Empty;                
+                return Config.GetString("config.xyChart.chartOrientation", out ori) ? ori : "vertical";
+            }
+        }
 
         public XyChart() {
             

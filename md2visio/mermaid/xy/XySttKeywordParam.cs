@@ -23,7 +23,7 @@ namespace md2visio.mermaid.xy
         void ParseXAxis(string param)
         {
             Match match = Regex.Match(param,
-                "^(\"?(?<title>[^\\[\\n\"]+)\"?)?[^\\S\\n]*((?<vals>\\[[^]]+\\])|(?<range>(?<s>\\d+)[^\\S\\n]*-->[^\\S\\n]*(?<e>\\d+)))?[^\\S\\n]*(?=\\n|$)");
+                "^(\"?(?<title>[^\\[\\n\"]+?)\"?)?[^\\S\\n]*((?<vals>\\[[^]]+\\])|(?<range>(?<s>\\d+)[^\\S\\n]*-->[^\\S\\n]*(?<e>\\d+)))?[^\\S\\n]*(?=\\n|$)");
             if (!match.Success) throw new SynException("expected x-axis parameters", Ctx);
 
             if (match.Groups["title"].Success) AddCompo("title", match.Groups["title"].Value);
@@ -37,7 +37,7 @@ namespace md2visio.mermaid.xy
         void ParseYAxis(string param)
         {
             Match match = Regex.Match(param,
-                "^(\"?(?<title>[^\\[\\n\"]+)\"?)?[^\\S\\n]*(?<range>(?<s>\\d+)[^\\S\\n]*-->[^\\S\\n]*(?<e>\\d+))?[^\\S\\n]*(?=\\n|$)");
+                "^(\"?(?<title>[^\\[\\n\"]+?)\"?)?[^\\S\\n]*(?<range>(?<s>\\d+)[^\\S\\n]*-->[^\\S\\n]*(?<e>\\d+))?[^\\S\\n]*(?=\\n|$)");
             if (!match.Success) throw new SynException("expected y-axis parameters", Ctx);
 
             if (match.Groups["title"].Success) AddCompo("title", match.Groups["title"].Value);

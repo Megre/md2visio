@@ -6,12 +6,15 @@ namespace md2visio.main
 {
     internal class AppTest
     {
-        string testDir = @"C:\Users\Megre\Documents\GitHub\md2visio\md2visio\test";
-        string[] files = ["graph", "journey", "packet", "pie", "xy"];
-        string outputPath = @"C:\Users\Megre\Desktop";
+        string testDir = @"test";
+        string[] files = ["graph", "journey", "packet", "pie"];
+        string outputPath = @$"{Environment.GetEnvironmentVariable("HOMEPATH")}\Desktop\TestOutput";
 
         public void Test()
         {
+            if(!Path.Exists(outputPath))
+                Directory.CreateDirectory(outputPath);
+
             AppConfig config = AppConfig.Instance;
             foreach (string file in files)
             {

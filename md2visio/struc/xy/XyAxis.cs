@@ -15,8 +15,9 @@ namespace md2visio.struc.xy
         public XyAxis(CompoDict dict)
         {
             Title = dict["title"] ?? string.Empty;
-            if (dict.ContainsKey("s") && dict.ContainsKey("e"))
-                InitRange(dict.Get("s"), dict.Get("e"));
+            string s = "rangeStart", e = "rangeEnd";
+            if (dict.ContainsKey(s) && dict.ContainsKey(e))
+                InitRange(dict.Get(s), dict.Get(e));
             if (dict.ContainsKey("vals"))
                 Values.Load(dict.Get("vals"));
         }
