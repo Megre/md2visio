@@ -10,7 +10,8 @@ The tool `md2visio` bridges this gap by converting Markdown (`Mermaid`/`MMD`) in
 
 Mermaid example:
 
-```bat
+````bat
+```mermaid
 journey
     %% journey test
     title My working day
@@ -24,6 +25,7 @@ journey
     section Go home
     	Make tea: 3: Me
 ```
+````
 
 Generated `Visio` graph:
 
@@ -57,7 +59,7 @@ It converts all `Mermaid` figures in `figure.md` and outputs `.vssx` files to `D
 
 ## Requirements
 
-- `Microsoft Visio 2010` or later. You need install `Visio` since `md2visio `opens `Visio` and automatically draws figures on it.
+- `Microsoft Visio 2010` or later. You need install `Visio` since `md2visio` opens `Visio` and automatically draws figures on it.
 - [md2visio.vssx](./md2visio/md2visio.vssx). This stencil file is provided by this project ([./md2visio/md2visio.vssx](./md2visio/md2visio.vssx)). It contains basic figure parts used by `md2visio`. You need to put this file to execution file path (or system path). 
 
 

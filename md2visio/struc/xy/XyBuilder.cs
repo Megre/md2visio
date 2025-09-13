@@ -34,7 +34,7 @@ namespace md2visio.struc.xy
             else if (kw == "title")
             {
                 if (next is not XySttKeywordParam) throw new SynException("expected title", iter);
-                xy.Title = iter.Next().Fragment;
+                xy.Title = iter.Next().Fragment.Trim('"');
             }
             else if(kw == "x-axis")
             {
@@ -51,12 +51,14 @@ namespace md2visio.struc.xy
             else if(kw == "line")
             {
                 if (next is not XySttKeywordParam) throw new SynException("expected line parameters", iter);
-                xy.Line.Load(iter.Next().Fragment);
+                //xy.Line.Load(iter.Next().Fragment);
+                xy.Contents.Add((new MmdJsonArray(iter.Next().Fragment), "line"));
             }
             else if(kw == "bar")
             {
                 if (next is not XySttKeywordParam) throw new SynException("expected bar parameters", iter);
-                xy.Bar.Load(iter.Next().Fragment);
+                //xy.Bar.Load(iter.Next().Fragment);
+                xy.Contents.Add((new MmdJsonArray(iter.Next().Fragment), "bar"));
             }
         }
     }

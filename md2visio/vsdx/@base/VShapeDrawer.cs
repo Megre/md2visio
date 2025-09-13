@@ -1,4 +1,5 @@
-﻿using md2visio.vsdx._tool;
+﻿using md2visio.mermaid.cmn;
+using md2visio.vsdx._tool;
 using md2visio.vsdx.tool;
 using Microsoft.Office.Interop.Visio;
 using System.Drawing;
@@ -10,7 +11,7 @@ namespace md2visio.vsdx.@base
     internal abstract class VShapeDrawer
     {
         public static readonly string VSSX = FileTool.ExtendPath("md2visio.vssx");
-        static Shape? shadow = null;
+        Shape? shadow = null;
 
         protected Application visioApp;
         protected Page visioPage;
@@ -172,19 +173,31 @@ namespace md2visio.vsdx.@base
 
         public SizeF MeasureTextSizeMM(string text)
         {
-            if(shadow == null)
-            {
-                shadow = DropText(text);
-                SetTextColor(shadow, VNamedColor.Create("white"));
-            }
-            shadow.Text = text;
+            CreateShadow(text);
+            if(shadow == null) throw new SynException("Cann't create shadow shape");
+
             SizeF size = MeasureTextSizeMM(text, FontName(visioApp, shadow), FontSize(shadow));
+            RemoveShadow();
             return size;
         }
 
-        public static void RemoveShadow()
+        void CreateShadow(string text)
         {
-            if(shadow != null) shadow.Delete();
+            if (shadow == null)
+            {
+                shadow = DropText(text);
+                SetTextColor(shadow, VNamedColor.Create("white"));
+                shadow.Text = text;
+            }
+        }
+
+        void RemoveShadow()
+        {
+            if (shadow != null)
+            {
+                shadow.Delete();
+                shadow = null;
+            }
         }
 
         public static double FontSize(Shape shape, string unit)

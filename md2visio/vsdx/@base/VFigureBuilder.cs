@@ -15,7 +15,6 @@ namespace md2visio.vsdx.@base
         public void Build(string outputFile)
         {
             ExecuteBuild();
-            VShapeDrawer.RemoveShadow();
             SaveAndClose(outputFile);
         }
 

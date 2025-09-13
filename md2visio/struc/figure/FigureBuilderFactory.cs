@@ -32,7 +32,8 @@ namespace md2visio.struc.figure
                 for (int pos = iter.Pos + 1; pos < list.Count; ++pos)
                 {
                     string word = list[pos].Fragment;
-                    if (SttFigureType.IsFigure(word)) BuildFigure(word);
+                    if (SttFigureType.IsFigure(word)) 
+                        BuildFigure(word);
                 }
             }            
         }

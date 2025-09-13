@@ -57,11 +57,13 @@
 
         public List<string> GetStringList(string prefix, int maxCount = 13)
         {
-            List<string> serial = new List<string>();
-            for (int i = 0; i < maxCount; ++i)
+            List<string> serial = new();
+            if(!GetString(prefix, out string s)) return serial;
+
+            string[] arr = s.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < Math.Min(arr.Length, maxCount); ++i)
             {
-                if (GetString($"{prefix}{i}", out string s))
-                    serial.Add(s);
+                serial.Add(arr[i]);
             }
             return serial;
         }

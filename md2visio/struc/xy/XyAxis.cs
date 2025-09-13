@@ -8,7 +8,7 @@ namespace md2visio.struc.xy
     {
         public string Title { get; set; } = string.Empty;
         public SizeF Range { get; set; } = SizeF.Empty;
-        public MmdJsonArray Values { get; set;} = new MmdJsonArray();
+        public MmdJsonArray Ticks { get; set;} = new MmdJsonArray();
 
         public XyAxis() { }
 
@@ -19,8 +19,9 @@ namespace md2visio.struc.xy
             if (dict.ContainsKey(s) && dict.ContainsKey(e))
                 InitRange(dict.Get(s), dict.Get(e));
             if (dict.ContainsKey("vals"))
-                Values.Load(dict.Get("vals"));
+                Ticks.Load(dict.Get("vals"));
         }
+       
 
         void InitRange(string rangeStart, string rangeEnd)
         {
