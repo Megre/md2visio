@@ -163,6 +163,8 @@ namespace md2visio.mermaid.cmn
         {
             for (int i = stateList.Count - 1; i >= 0; i--)
             {
+                if (StateList[i] is SttMermaidStart) break;
+
                 string frag = stateList.ElementAt(i).Fragment;
                 if (Regex.IsMatch(frag, $"^({fragmentPattern})$")) return (true, frag);
             }

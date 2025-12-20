@@ -55,15 +55,26 @@
                 || UpdateDefaults().GetString(keyPath, out s);
         }
 
-        public List<string> GetStringList(string prefix, int maxCount = 13)
+        public List<string> GetStringList(string keyPath, int maxCount = 13)
         {
             List<string> serial = new();
-            if(!GetString(prefix, out string s)) return serial;
+            if(!GetString(keyPath, out string s)) return serial;
 
             string[] arr = s.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < Math.Min(arr.Length, maxCount); ++i)
             {
                 serial.Add(arr[i]);
+            }
+            return serial;
+        }
+
+        public List<string> GetStringListFromMultipleKeys(string keyPathPrefix, int maxCount = 13)
+        {
+            List<string> serial = new();
+            for (int i = 0; i < maxCount; ++i)
+            {
+                if(GetString(keyPathPrefix + i, out string s)) 
+                    serial.Add(s);
             }
             return serial;
         }

@@ -1,24 +1,29 @@
-﻿namespace md2visio.vsdx._tool
+﻿using md2visio.main;
+using md2visio.struc.figure;
+
+namespace md2visio.vsdx._tool
 {
     internal class FileTool
     {
         public static string ExtendPath(string path)
         {
-            string? fullpath = Path.Combine(ExeDir()??"", path);
-            if (Path.Exists(fullpath))
-                return fullpath;
+            string? fullpath = Path.GetFullPath(path);
+            if (!Path.Exists(fullpath))
+                fullpath = Path.Combine(ExeDir()??"", path);
 
-            fullpath = Path.Combine(WorkDir()??"", path);
-            if (Path.Exists(fullpath))
-                return fullpath;
+            if (!Path.Exists(fullpath))
+                fullpath = Path.Combine(WorkDir()??"", path);
 
-            fullpath = FindFileInPath(path);
-            if(fullpath != null)
-                return fullpath;
+            if (!Path.Exists(fullpath))
+                fullpath = FindFileInPath(path);
 
-            if (!Path.Exists(path))
+            if (!Path.Exists(fullpath))
                 throw new FileNotFoundException($"File not found: {path}");
-            return path;
+
+            if(AppConfig.Instance.Debug)
+                Console.WriteLine($"ExtendPath: {path} => {fullpath}");
+            
+            return fullpath;
         }
 
         public static string? ExeDir()

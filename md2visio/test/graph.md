@@ -6,7 +6,7 @@ title: 带文本的节点
 %%{init: {'theme':'forest'}}%%
  graph LR   
     C
-    --> 
+    <--> 
     D[[D估算载荷分布]]    
     
     C --> SJ

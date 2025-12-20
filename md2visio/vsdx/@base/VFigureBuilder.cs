@@ -15,6 +15,8 @@ namespace md2visio.vsdx.@base
         public void Build(string outputFile)
         {
             ExecuteBuild();
+
+            Console.WriteLine($"Output: {outputFile}");
             SaveAndClose(outputFile);
         }
 

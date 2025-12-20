@@ -8,9 +8,10 @@ namespace md2visio.mermaid.graph
         public override SynState NextState()
         {
             SynState state = Create(Ctx);
-            if (state.IsEmpty()) throw new SynException("syntax error", Ctx);
+            if (!state.IsEmpty()) 
+                return state.Forward<GSttLinkLabel>();
 
-            return state;
+            return Forward<GSttNoLabelLink>();
         }
 
         public static SynState Create(SynContext ctx)
@@ -21,7 +22,7 @@ namespace md2visio.mermaid.graph
             state.Ctx = ctx;
             state.Save(ctx.TestGroups["estart"].Value);
 
-            return state.Slide(state.Fragment.Length).Forward<GSttLinkLabel>();
+            return state.Slide(state.Fragment.Length);
         }
 
         public static bool IsLinkStart(SynContext ctx)

@@ -48,7 +48,11 @@ namespace md2visio.vsdx.@base
 
         public List<string> GetStringList(string prefix, int maxCount = 13)
         {
-            return figure.Config.GetStringList(prefix, maxCount);
+            List<string> list = figure.Config.GetStringList(prefix, maxCount);
+            if(list.Count == 0) 
+                list = figure.Config.GetStringListFromMultipleKeys(prefix); 
+
+            return list;
         }
 
     }

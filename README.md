@@ -38,10 +38,10 @@ Generated `Visio` graph:
 ## Command Line
 
 ```bat
-md2visio /I MD_FILE /O OUTPUT_PATH [/V] [/Y]
+md2visio /I MD_FILE [/O OUTPUT_PATH] [/V] [/Y]
 
 /I      Specify the path of the input file (.md)
-/O      Specify the path/folder of the output file (.vsdx)
+/O      Specify the output folder or file path (.vsdx) (optional, default is the working directory)
 /V      Show the Visio application while drawing (optional, default is invisible)
 /Y      Quietly overwrite the existing output file (optional, by default requires user confirmation)
 /?      Print this help
@@ -88,7 +88,7 @@ Development plan:
 - [ ] timeline
 - [ ] zenuml
 - [ ] sankey-beta
-- [ ] xychart-beta
+- [x] xychart-beta
 - [ ] block-beta
 - [x] packet-beta
   - [x] themes

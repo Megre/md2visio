@@ -1,11 +1,13 @@
-﻿namespace md2visio.main
+﻿using md2visio.vsdx._tool;
+
+namespace md2visio.main
 {
     internal class AppConfig
     {
         public static readonly AppConfig Instance = new AppConfig();
 
         public string InputFile { get; set; } = string.Empty;
-        public string OutputPath { get; set; } = string.Empty;
+        public string OutputPath { get; set; } = FileTool.WorkDir();
         public bool Visible { get; set; } = false; 
         public bool Quiet { get; set; } = false;
         public bool Debug { get; set; } = false;
@@ -47,9 +49,9 @@
         void ShowHelp()
         {
             Console.WriteLine(
-                "md2visio /I MD_FILE /O OUTPUT_PATH [/V] [/Y]\n\n" +
+                "md2visio /I MD_FILE [/O OUTPUT_PATH] [/V] [/Y]\n\n" +
                 "/I\tSpecify the path of the input file (.md)\n" +
-                "/O\tSpecify the path/folder of the output file (.vsdx)\n" +
+                "/O\tSpecify the output folder or file path (.vsdx) (optional, default is the working directory)\n" +
                 "/V\tShow the Visio application while drawing (optional, default is invisible)\n" +
                 "/Y\tQuietly overwrite the existing output file (optional, by default requires user confirmation\n" +
                 "/?\tPrint this help");

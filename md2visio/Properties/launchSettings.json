@@ -2,7 +2,7 @@
   "profiles": {
     "md2visio": {
       "commandName": "Project",
-      "commandLineArgs": "/Y /D /V /I \"$(ProjectDir)\\test\\xy.md\" /O \"$(HOMEPATH)\\Desktop\"",
+      "commandLineArgs": "/Y /D /V /I \"$(ProjectDir)\\test\\graph.md\" /O \"$(HOMEPATH)\\Desktop\"",
       "workingDirectory": "$(ProjectDir)"
     }
   }
